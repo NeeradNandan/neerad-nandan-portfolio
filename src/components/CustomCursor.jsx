@@ -42,7 +42,7 @@ const CustomCursor = () => {
 		
 	}, [] );
 	
-	const isMobile = typeof window !== "undefined" && window.matchMedia( "(max-width: 768px)" ).matches;
+	const isMobile = typeof window !== "undefined" && window.matchMedia( "(max-width: 768px)").matches;
 	
 	if ( isMobile ) {
 		return null;
