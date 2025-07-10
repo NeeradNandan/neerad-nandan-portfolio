@@ -1,3 +1,4 @@
+import CustomCursor from "./components/CustomCursor.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 
@@ -7,6 +8,7 @@ const App = () => {
 		<div>
 			<Header />
 			<Hero />
+			<CustomCursor />
 		</div>
 	);
 };
