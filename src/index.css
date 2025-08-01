@@ -6,9 +6,12 @@
 	--foreground: 0 0% 100%;
 }
 
+* {
+	cursor: none !important;
+}
+
 html {
 	scroll-behavior: smooth;
-	cursor:          none; /* Hide default cursor */
 }
 
 body {
