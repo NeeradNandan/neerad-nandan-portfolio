@@ -45,7 +45,9 @@ const Header = () => {
 						initial={{ opacity: 0, scale: 0.5 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 1.3, duration: 0.8 }}
-						href='#'
+						href='https://github.com/NeeradNandan'
+						target="_blank"
+						rel="noopener noreferrer"
 						className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'
 					>
 						<FiGithub
@@ -53,13 +55,15 @@ const Header = () => {
 						/>
 					</motion.a>
 					<motion.a
-						initial={{ opacity: 0, scale: 0.5 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ delay: 1.3, duration: 0.8 }}
-						href='#'
+						initial={ { opacity: 0, scale: 0.5 } }
+						animate={ { opacity: 1, scale: 1 } }
+						transition={ { delay: 1.3, duration: 0.8 } }
+						href='https://www.linkedin.com/in/neerad-n-156407292/'
+						target="_blank"
+						rel="noopener noreferrer"
 						className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'
 					>
-						<FiTwitter
+						<FiLinkedin
 							className='w-5 h-5'
 						/>
 					</motion.a>
@@ -67,10 +71,12 @@ const Header = () => {
 						initial={{ opacity: 0, scale: 0.5 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 1.3, duration: 0.8 }}
-						href='#'
+						href='https://x.com/nrdnandan'
+						target="_blank"
+						rel="noopener noreferrer"
 						className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'
 					>
-						<FiLinkedin
+						<FiTwitter
 							className='w-5 h-5'
 						/>
 					</motion.a>
@@ -115,14 +121,14 @@ const Header = () => {
 				</nav>
 				<div className='pt-4 border-t border-gray-200 dark:border-gray-700 '>
 					<div className='flex space-x-5'>
-						<a href='#' >
+						<a href='https://github.com/NeeradNandan' >
 							<FiGithub className='h-5 w-5 text-gray-300' />
 						</a>
-						<a href='#' >
-							<FiTwitter className='h-5 w-5 text-gray-300' />
-						</a>
-						<a href='#' >
+						<a href='https://www.linkedin.com/in/neerad-n-156407292/' >
 							<FiLinkedin className='h-5 w-5 text-gray-300' />
+						</a>
+						<a href='https://x.com/nrdnandan'>
+							<FiTwitter className='h-5 w-5 text-gray-300'/>
 						</a>
 					</div>
 					<button

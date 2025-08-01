@@ -28,7 +28,7 @@ const Footer = () => {
 							className='flex space-x-4'
 						>
 							<a
-								href='#'
+								href='https://github.com/NeeradNandan'
 								className='text-gray-700 hover:text-violet-400 transition-colors'
 							>
 								<FiGithub
@@ -37,7 +37,7 @@ const Footer = () => {
 								
 							</a>
 							<a
-								href='#'
+								href='https://www.linkedin.com/in/neerad-n-156407292/'
 								className='text-gray-700 hover:text-violet-400 transition-colors'
 							>
 								<FiLinkedin
@@ -46,7 +46,7 @@ const Footer = () => {
 							
 							</a>
 							<a
-								href='#'
+								href='https://x.com/nrdnandan'
 								className='text-gray-700 hover:text-violet-400 transition-colors'
 							>
 								<FiTwitter

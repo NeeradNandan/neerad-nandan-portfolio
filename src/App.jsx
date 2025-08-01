@@ -5,6 +5,7 @@ import CustomCursor from "./components/CustomCursor.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
+import ProgressBar from "./components/ProgressBar.jsx";
 import ProjectSection from "./components/ProjectSection.jsx";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
@@ -29,6 +30,7 @@ const App = () => {
 			<ProjectSection />
 			<ContactSection />
 			<Footer />
+			<ProgressBar />
 		</div>
 	);
 };
