@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
 import AboutSection from "./components/AboutSection.jsx";
 import ContactSection from "./components/ContactSection.jsx";
@@ -11,7 +11,6 @@ import ProgressBar from "./components/ProgressBar.jsx";
 import ProjectSection from "./components/ProjectSection.jsx";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { useState } from "react";
 import axios from 'axios';
 
 
@@ -40,10 +39,10 @@ const App = () => {
 		e.preventDefault(); // Prevent the default form refresh
 		setStatus( 'Sending...' );
 		
-		axios.post( 'https://formspree.io/f/manbdvrn', formData, { // <-- IMPORTANT: Replace with your Formspree URL
+		axios.post( 'https://formspree.io/f/manbdvrn', formData, {
 			     headers: { 'Accept': 'application/json' }
 		     } )
-		     .then( response => {
+		     .then( () => {
 			     setStatus( 'Message sent successfully!' );
 			     setFormData( { name: '', email: '', message: '' } ); // Clear the form
 			     setTimeout( () => {
@@ -52,9 +51,58 @@ const App = () => {
 			     }, 2000 );
 		     } )
 		     .catch( error => {
+			     console.error( 'Form submission failed:', error );
 			     setStatus( 'Oops! There was a problem. Please try again.' );
 		     } );
 	};
+	
+	useEffect( () => {
+		document.title = 'Neerad Nandan';
+		// 1. Define the colors from your Tailwind theme
+		const colors = {
+			gray500:   '#6B7280',
+			gray100:   '#F3F4F6',
+			purple600: '#7C3AED',
+		};
+		
+		// 2. Create the SVG as a string. This describes your logo perfectly.
+		const svgString = `
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="${ colors.gray500 }" />
+                        <stop offset="100%" stop-color="${ colors.gray100 }" />
+                    </linearGradient>
+                </defs>
+                <rect width="32" height="32" rx="8" fill="url(#logoGradient)"/>
+                <text
+                    x="50%"
+                    y="50%"
+                    dominant-baseline="central"
+                    text-anchor="middle"
+                    fill="${ colors.purple600 }"
+                    font-size="18"
+                    font-family="sans-serif"
+                    font-weight="bold"
+                >
+                    N
+                </text>
+            </svg>
+        `;
+		
+		// 3. Encode the SVG string and create a data URL
+		const dataUrl = `data:image/svg+xml;base64,${ btoa( svgString ) }`;
+		
+		// 4. Find or create the favicon link tag and set its href
+		let link = document.querySelector( "link[rel~='icon']" );
+		if ( !link ) {
+			link = document.createElement( 'link' );
+			link.rel = 'icon';
+			document.head.appendChild( link );
+		}
+		link.href = dataUrl;
+		
+	}, [] ); // The empty array ensures this runs only once on mount.
 	
 	
 	useEffect( () => {
@@ -72,7 +120,6 @@ const App = () => {
 			<Header
 				openContactForm={ openContactForm }
 			/>
-			
 			<AnimatePresence>
 				{ contactFormOpen && (
 					<motion.div
@@ -164,7 +211,6 @@ const App = () => {
 					</motion.div>
 				) }
 			</AnimatePresence>
-			
 			<CustomCursor/>
 			<main className='pt-16 md:pt-20'>
 				<Hero />

@@ -68,7 +68,10 @@ const ContactSection = ( { openContactForm } ) => {
 					<p
 						className='text-black lg:w-[40rem] w-[20rem] absolute sm:mt-3 mt-1 md:scale-[0.1] scale-[0.068]'
 					>
-						Front-end developer
+						I build high-performance, user-centric web applications with clean, maintainable code. Let's
+						discuss how I can help solve your business challenges and achieve your digital goals.
+					
+					
 					</p>
 					
 					<button
