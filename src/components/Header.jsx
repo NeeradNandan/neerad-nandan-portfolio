@@ -1,14 +1,25 @@
 import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react";
 import { FiGithub, FiLinkedin, FiMenu, FiTwitter, FiX } from "react-icons/fi";
-const Header = () => {
+import { Link } from "react-scroll";
+const Header = ( { openContactForm } ) => {
 	const [ isOpen, setIsOpen ] = useState( false );
-	const [ contactFormOpen, setContactFormOpen ] = useState(false);
+	/*const [ contactFormOpen, setContactFormOpen ] = useState(false);
 	const openContactForm = () => setContactFormOpen(true);
-	const closeContactForm = () => setContactFormOpen(false);
+	const closeContactForm = () => setContactFormOpen(false)*/;
 	const toggleMenu = () => setIsOpen( ! isOpen );
+	
+	const navLinks = [
+		{ name: 'Home', to: 'hero' },
+		{ name: 'About', to: 'about' },
+		{ name: 'Projects', to: 'horizantal-section' },
+		/*{ name: 'Experience', to: 'experience' },*/
+		{ name: 'Contact', to: 'contact' },
+	];
+	
+	
 	return (
-		<header className='absolute w-full z-50 transition-all duration-300'>
+		<header className='fixed w-full z-50 transition-all duration-300 backdrop-blur-sm bg-gray-900/75'>
 			<div className='container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 '>
 				{/*Logo Name*/}
 				<motion.div
@@ -25,18 +36,27 @@ const Header = () => {
 				</motion.div>
 				{/*Desktop Navigation*/}
 				<nav className='lg:flex hidden space-x-8'>
-					{['Home', 'About', 'Projects', 'Experience', 'Contact'].map((item, index) => (
-						<motion.a
+					{navLinks.map((item, index) => (
+						<motion.div
 							initial={{ opacity: 0, y: -20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.7 + index * 0.2 }}
-							href='#'
+							//href={item.href}
 							key={index}
-							className='relative text-gray-800 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group'
-						>
-							{item}
-							<span className='absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300'></span>
-						</motion.a>
+							>
+							<Link
+							to={ item.to }
+							spy={ true }
+							smooth={ true }
+							offset={ -80 }
+							duration={ 500 }
+							className='px-2 py-3 -mx-2 -my-3 relative text-gray-800 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group'
+							activeClass="text-violet-500"
+							>
+							{item.name}
+							{/*<span className='absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300'></span>*/}
+							</Link>
+						</motion.div>
 					))}
 				</nav>
 				{/*Social Icons*/}
@@ -108,15 +128,20 @@ const Header = () => {
 				transition={{ duration: 0.5 }}
 				className='md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 spacy-y-5 '>
 				<nav className='flex flex-col spacy-y-3'>
-					{['Home', 'About', 'Projects', 'Experience', 'Contact'].map((item, index) => (
-						<a
+					{navLinks.map((item, index) => (
+						<Link
 							onClick={toggleMenu}
 							className='text-gray-300 font-medium py-2'
-							href='#'
+							//href='#'
+							to={ item.to }
+							spy={ true }
+							smooth={ true }
+							offset={ -80 }
+							duration={ 500 }
 							key={index}
 						>
-							{item}
-						</a>
+							{item.name}
+						</Link>
 					))}
 				</nav>
 				<div className='pt-4 border-t border-gray-200 dark:border-gray-700 '>
@@ -142,7 +167,7 @@ const Header = () => {
 				</div>
 			</motion.div>
 			{/*Contact Form*/}
-			<AnimatePresence>
+			{/*<AnimatePresence>
 				{contactFormOpen && (
 					<motion.div
 						initial={{ opacity: 0 }}
@@ -168,7 +193,7 @@ const Header = () => {
 									<FiX className='w-5 h-5 text-gray-300 font-extrabold'/>
 								</button>
 							</div>
-							{/*Input Form*/}
+							Input Form
 							<form className='space-y-4'>
 								<div>
 									<label htmlFor='name' className='block text-sm font-weight font-medium text-gray-300 mb-1 '>
@@ -215,7 +240,7 @@ const Header = () => {
 						</motion.div>
 					</motion.div>
 				)}
-			</AnimatePresence>
+			</AnimatePresence>*/}
 			
 		</header>
 	);

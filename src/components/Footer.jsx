@@ -4,16 +4,16 @@ import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 const Footer = () => {
 	return (
 		<footer
-			className='bg-black text-white py-16 px-6 mt-40'
+			className='bg-black text-white md:py-16 py-10 md:px-6 px-2 md:mt-40 mt-10'
 		>
 			<div
 				className='max-w-6xl mx-auto'
 			>
 				<div
-					className='flex justify-between items-center'
+					className='flex flex-col md:flex-row justify-between items-center'
 				>
 					<h2
-						className='text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent'
+						className='text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent'
 					>
 						Neerad Nandan
 					</h2>

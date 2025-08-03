@@ -10,6 +10,10 @@ const CustomCursor = () => {
 		const cursor = cursorRef.current;
 		const cursorBorder = cursorBorderRef.current;
 		
+		if ( !cursor || !cursorBorder ) {
+			return;
+		}
+		
 		gsap.set([cursor, cursorBorder], {
 			xPercent: -50,
 			yPercent: -50,

@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
-const ContactSection = () => {
+const ContactSection = ( { openContactForm } ) => {
 	const circleRef = useRef(null);
 	const sectionRef = useRef(null);
 	const initialTextref = useRef(null);
@@ -41,6 +41,7 @@ const ContactSection = () => {
 	
 	return (
 		<section
+			id='contact'
 			className='flex items-center justify-center bg-black relative'
 			style={{ overscrollBehavior: 'none' }}
 			ref={sectionRef}
@@ -72,6 +73,7 @@ const ContactSection = () => {
 					
 					<button
 						className='px-10 py-2 rounded-xl bg-black hover:bg-white hover:text-black transition-all duration-500 scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap '
+						onClick={openContactForm}
 					>
 						Contact Me
 					</button>
