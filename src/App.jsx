@@ -19,11 +19,12 @@ const App = () => {
 	const openContactForm = () => setContactFormOpen( true );
 	const closeContactForm = () => setContactFormOpen( false );
 	
-	const [ formData, setFormData ] = useState( {
-		                                            name:    '',
-		                                            email:   '',
-		                                            message: '',
-	                                            } );
+	const [ formData, setFormData ] = useState(
+		{
+			name:    '',
+			email:   '',
+			message: '',
+		});
 	const [ status, setStatus ] = useState( '' );
 	const handleChange = ( e ) => {
 		const { id, value } = e.target;
@@ -212,7 +213,7 @@ const App = () => {
 				) }
 			</AnimatePresence>
 			<CustomCursor/>
-			<main className='pt-16 md:pt-20'>
+			<main className='pt-40 md:pt-20'>
 				<Hero />
 				<AboutSection />
 				<ProjectSection />

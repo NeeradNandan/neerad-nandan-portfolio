@@ -10,27 +10,63 @@ const ProjectSection = () => {
 	const titleRef = useRef(null);
 	const triggerRef = useRef(null);
 	const horizontalRef = useRef(null);
+	const handleShare = async ( project ) => {
+		
+		const shareData = {
+			title: project.title,
+			text:  `Check out this project: ${ project.title }`,
+			url:   project.projectUrl,
+		};
+		
+		// Check if the browser supports the Web Share API
+		if ( navigator.share ) {
+			try {
+				await navigator.share( shareData );
+				console.log( 'Project shared successfully' );
+			}
+			catch ( err ) {
+				console.error( 'Error sharing:', err );
+			}
+		} else {
+			// Fallback for browsers that don't support it (e.g., desktop Firefox)
+			// We'll copy the link to the clipboard
+			try {
+				await navigator.clipboard.writeText( project.projectUrl );
+				alert( 'Link copied to clipboard!' ); // Simple feedback
+			}
+			catch ( err ) {
+				alert( 'Could not copy link.' );
+				console.error( 'Failed to copy: ', err );
+			}
+		}
+	};
+	
 	
 	const projectImages = [
 		{
 			id: 1,
 			title: 'Movie App',
-			imageSource: '/images/project-1.png'
+			imageSource: '/images/project-1.png',
+			projectUrl: 'https://movie-app-one-hazel.vercel.app/'
 		},
 		{
 			id: 2,
 			title: 'Habit Tracker App',
 			imageSource: '/images/project-2.png',
+			projectUrl: 'https://github.com/NeeradNandan/habit-tracker-app'
+			
 		},
 		{
 			id: 3,
 			title: 'Chatbot App',
 			imageSource: '/images/project-3.png',
+			projectUrl: 'https://chatbot-project-ten-alpha.vercel.app/'
 		},
 		{
 			id: 4,
 			title: 'NSE Options App',
 			imageSource: '/images/project-4.png',
+			projectUrl: 'https://github.com/NeeradNandan/nse-option-app'
 		}
 	]
 	
@@ -54,8 +90,15 @@ const ProjectSection = () => {
 			
 			const tl = gsap.timeline({ scrollTrigger: { trigger: panel, containerAnimation: horizontalScroll, start: 'left right', end: 'right left', scrub: true} })
 			
-			tl.fromTo( image, { scale: 0, rotate: -20 }, { scale: 1, rotate: 1, duration: 0.5 })
-			
+			tl.fromTo( image, { scale: 0.4, rotate: -20 }, { scale: 1, rotate: 1, duration: 0.8 })
+			/*tl.fromTo(
+				image,
+				{ scale: 0.2, rotate: -20 }, // Starting state
+				{ scale: 0.5, rotate: 0, ease: 'power1.in' } // Peak state
+			).to(
+				image,
+				{ scale: 0.2, rotate: 5, ease: 'power1.out' } // Ending state
+			);*/
 			if(imageTitle) {
 			tl.fromTo( imageTitle, { y: 30 }, { y: -100, duration: 0.3 }, 0.2 )
 			}
@@ -67,10 +110,10 @@ const ProjectSection = () => {
 		<section
 			ref={sectionRef}
 			id='horizantal-section'
-			className='relative py-20 bg-[#f6f6f6] overflow-hidden '
+			className='relative py-12 md:py-20 bg-[#f6f6f6] overflow-hidden '
 		>
 			<div
-				className='container mx-auto px-4 mb-16 relative z-10 '
+				className='container mx-auto px-4 mb-8 md:mb-16 relative z-10 '
 			>
 				<h2
 					ref={titleRef}
@@ -85,12 +128,12 @@ const ProjectSection = () => {
 			</div>
 			
 			<div
-				className='overflow-hidden opacity-0 h-screen'
+				className='overflow-hidden opacity-0 h-[70vh] md:h-screen'
 				ref={triggerRef}
 			>
 				<div
 					ref={horizontalRef}
-					className='flex horizontal-section md:w-[400%] w-[420%]'
+					className='flex horizontal-section md:w-[400%] w-[420%] md:mt-20'
 				>
 					{
 						projectImages.map((project) => (
@@ -98,15 +141,25 @@ const ProjectSection = () => {
 								key={project.id}
 							    className='panel relative flex items-center justify-center h-full'
 							>
-								<div className='relative w-full h-full flex flex-col items-center justify-center p-4 sm:p-8 md:p-12'>
+								<div className='relative w-full h-full flex flex-col items-center justify-center sm:p-8 md:p-12'>
 									<img
 										src={project.imageSource}
 										alt='Project-img'
-										className='project-image max-w-full rounded-2xl max-h-[85%] object-contain'
+										className='project-image max-w-full rounded-2xl md:max-h-[85%] max-h-full object-contain'
 									/>
-									<h2 className='project-title flex items-center gap-3 md:text-3xl text-sm md:text-bold text-black mt-6 z-50 text-nowrap hover:text-gray-400 transition-colors duration-300 cursor-pointer '>
-										{project.title} <SlShareAlt />
-									</h2>
+									<div
+										className='project-title flex items-center gap-3 md:text-3xl text-sm md:text-bold text-black mt-24 md:mt-20 z-50 text-nowrap cursor-pointer'>
+										<a
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:text-gray-400 transition-colors duration-300"
+											href={ project.projectUrl }>
+											{ project.title }
+										</a>
+										<button onClick={ ( e ) => handleShare( e, project ) } className="hover:text-purple-600 transition-colors duration-300">
+											<SlShareAlt />
+										</button>
+									</div>
 								</div>
 							</div>
 						))
