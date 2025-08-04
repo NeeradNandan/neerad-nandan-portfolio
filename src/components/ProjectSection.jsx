@@ -47,7 +47,7 @@ const ProjectSection = () => {
 			id: 1,
 			title: 'Movie App',
 			imageSource: '/images/project-1.png',
-			projectUrl: 'https://movie-app-one-hazel.vercel.app/'
+			projectUrl: 'https://github.com/NeeradNandan/movie-app'
 		},
 		{
 			id: 2,
@@ -60,7 +60,7 @@ const ProjectSection = () => {
 			id: 3,
 			title: 'Chatbot App',
 			imageSource: '/images/project-3.png',
-			projectUrl: 'https://chatbot-project-ten-alpha.vercel.app/'
+			projectUrl: 'https://github.com/NeeradNandan/chatbot-project'
 		},
 		{
 			id: 4,
