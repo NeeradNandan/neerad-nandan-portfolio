@@ -148,7 +148,7 @@ const ProjectSection = () => {
 										className='project-image max-w-full rounded-2xl md:max-h-[85%] max-h-full object-contain'
 									/>
 									<div
-										className='project-title flex items-center gap-3 md:text-3xl text-xl md:text-bold text-black mt-24 md:mt-20 z-50 text-nowrap cursor-pointer'>
+										className='project-title flex items-center gap-3 md:text-3xl text-2xl md:text-bold text-black mt-24 md:mt-20 z-50 text-nowrap cursor-pointer'>
 										<a
 											target="_blank"
 											rel="noopener noreferrer"
@@ -156,7 +156,7 @@ const ProjectSection = () => {
 											href={ project.projectUrl }>
 											{ project.title }
 										</a>
-										<button onClick={ ( e ) => handleShare( e, project ) } className="hover:text-purple-600 transition-colors duration-300">
+										<button onClick={ ( e ) => handleShare( project ) } className="hover:text-purple-600 transition-colors duration-300" aria-label={ `Share ${ project.title }` }>
 											<SlShareAlt />
 										</button>
 									</div>
