@@ -82,8 +82,10 @@ const ProjectSection = () => {
 		gsap.fromTo(sectionRef.current, { backgroundPosition: '50% 0%' }, { backgroundPosition: '50% 100%', ease: 'none', scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: true,  } })
 		
 		const headerHeight = 80;
+		const mainPadding = 80; // Account for main element padding
+		const totalOffset = headerHeight + mainPadding;
 		
-		const horizontalScroll = gsap.to('.panel', { xPercent: -100 * (projectImages.length - 1), ease: 'none', scrollTrigger: { trigger: triggerRef.current, start: `top ${headerHeight}px`, end: () => `+=${horizontalRef.current.offsetWidth}`, pin: true, scrub: 1, snap: { snapTo: 1 / (projectImages.length - 1),  duration: {main: 0.2, max: 0.3}, delay: 0.1 }, invalidateOnRefresh: true, }});
+		const horizontalScroll = gsap.to('.panel', { xPercent: -100 * (projectImages.length - 1), ease: 'none', scrollTrigger: { trigger: triggerRef.current, start: `top ${totalOffset}px`, end: () => `+=${horizontalRef.current.offsetWidth}`, pin: true, scrub: 1, snap: { snapTo: 1 / (projectImages.length - 1),  duration: {main: 0.2, max: 0.3}, delay: 0.1 }, invalidateOnRefresh: true, }});
 		
 		const panels = gsap.utils.toArray('.panel');
 		panels.forEach((panel, index) => {
