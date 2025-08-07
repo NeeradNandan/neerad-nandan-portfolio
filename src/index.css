@@ -39,7 +39,7 @@ select {
 section {
 	position:   relative;
 	width:      100%;
-	min-height: 100vh;
+	/*min-height: 100vh;*/
 	overflow:   hidden;
 }
 
@@ -70,7 +70,7 @@ section {
 /* Responsive text sizing */
 @media (max-width: 640px) {
 	h1 {
-		font-size: 2.5rem !important;
+		font-size: 3.5rem !important;
 	}
 	
 	h2 {
@@ -78,7 +78,7 @@ section {
 	}
 	
 	p {
-		font-size: 1rem !important;
+		font-size: 1.2rem !important;
 	}
 	
 	.panel-title {

@@ -81,7 +81,9 @@ const ProjectSection = () => {
 		
 		gsap.fromTo(sectionRef.current, { backgroundPosition: '50% 0%' }, { backgroundPosition: '50% 100%', ease: 'none', scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: true,  } })
 		
-		const horizontalScroll = gsap.to('.panel', { xPercent: -100 * (projectImages.length - 1), ease: 'none', scrollTrigger: { trigger: triggerRef.current, start: 'top top', end: () => `+=${horizontalRef.current.offsetWidth}`, pin: true, scrub: 1, snap: { snapTo: 1 / (projectImages.length - 1),  duration: {main: 0.2, max: 0.3}, delay: 0.1 }, invalidateOnRefresh: true, }});
+		const headerHeight = 80;
+		
+		const horizontalScroll = gsap.to('.panel', { xPercent: -100 * (projectImages.length - 1), ease: 'none', scrollTrigger: { trigger: triggerRef.current, start: `top ${headerHeight}px`, end: () => `+=${horizontalRef.current.offsetWidth}`, pin: true, scrub: 1, snap: { snapTo: 1 / (projectImages.length - 1),  duration: {main: 0.2, max: 0.3}, delay: 0.1 }, invalidateOnRefresh: true, }});
 		
 		const panels = gsap.utils.toArray('.panel');
 		panels.forEach((panel, index) => {
@@ -100,7 +102,7 @@ const ProjectSection = () => {
 				{ scale: 0.2, rotate: 5, ease: 'power1.out' } // Ending state
 			);*/
 			if(imageTitle) {
-			tl.fromTo( imageTitle, { y: 30 }, { y: -100, duration: 0.3 }, 0.2 )
+			tl.fromTo( imageTitle, { y: 0 }, { y: -100, duration: 0.3 }, 0.2 )
 			}
 		})
 	}, [projectImages.length]);
@@ -148,7 +150,7 @@ const ProjectSection = () => {
 										className='project-image max-w-full rounded-2xl md:max-h-[85%] max-h-full object-contain'
 									/>
 									<div
-										className='project-title flex items-center gap-3 md:text-3xl text-2xl md:text-bold text-black mt-24 md:mt-20 z-50 text-nowrap cursor-pointer'>
+										className='project-title flex items-center gap-3 md:text-3xl text-2xl md:text-bold text-black mt-30 mb-10 md:mt-20 z-50 text-nowrap cursor-pointer'>
 										<a
 											target="_blank"
 											rel="noopener noreferrer"

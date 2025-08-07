@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { useState } from "react";
 import { FiGithub, FiLinkedin, FiMenu, FiTwitter, FiX } from "react-icons/fi";
 import { Link } from "react-scroll";
@@ -6,7 +6,7 @@ const Header = ( { openContactForm } ) => {
 	const [ isOpen, setIsOpen ] = useState( false );
 	/*const [ contactFormOpen, setContactFormOpen ] = useState(false);
 	const openContactForm = () => setContactFormOpen(true);
-	const closeContactForm = () => setContactFormOpen(false)*/;
+	const closeContactForm = () => setContactFormOpen(false)*/
 	const toggleMenu = () => setIsOpen( ! isOpen );
 	
 	const navLinks = [
@@ -105,7 +105,7 @@ const Header = ( { openContactForm } ) => {
 					onClick={openContactForm}
 					 initial={{ opacity: 0, scale: 0.8 }}
 					 animate={{ opacity: 1, scale: 1 }}
-					 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 1.6, duration: 0.8 }}
+					 transition={{ type: 'spring', stiffness: 100, damping: 25, delay: window.innerWidth < 768 ? 0.8 : 1.6, duration: 0.6 }}
 					 className='ml-4 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-400 to-gray-100 text-violet-700 font-bold hover:from-violet-700 hover:to-purple-700 hover:text-white transition-all duration-300'
 				>
 					Hire Me

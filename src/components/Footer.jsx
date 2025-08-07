@@ -4,7 +4,7 @@ import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 const Footer = () => {
 	return (
 		<footer
-			className='bg-black text-white md:py-16 py-10 md:px-6 px-2 md:mt-40 mt-10'
+			className='bg-black text-white md:py-16 md:px-6 px-2 md:mt-40 mt-10'
 		>
 			<div
 				className='max-w-6xl mx-auto'

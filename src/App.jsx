@@ -213,7 +213,7 @@ const App = () => {
 				) }
 			</AnimatePresence>
 			<CustomCursor/>
-			<main className='pt-40 md:pt-20'>
+			<main className='pt-20 md:pt-20'>
 				<Hero />
 				<AboutSection />
 				<ProjectSection />
